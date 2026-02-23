@@ -1,9 +1,7 @@
 package Server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -23,11 +21,13 @@ public class MainServer {
             InputStream is = clientSocket.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String m = br.readLine();
-            System.out.println("SERVER: il cliente: "+ clientSocket +
-                    "ha scritto '" + m + "'");
+            System.out.println("SERVER: il cliente ha scritto '" + m + "'");
 
             //Scrittura
-
+            OutputStream os = clientSocket.getOutputStream();
+            PrintWriter pw = new PrintWriter(os);
+            pw.println("Ciao client!");
+            pw.flush();
             //Chiusura
             clientSocket.close();   //chiusura data socket
             server.close();         //chiusura connection socket

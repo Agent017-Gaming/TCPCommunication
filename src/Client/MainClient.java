@@ -1,9 +1,7 @@
 package Client;
 
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class MainClient {
@@ -12,14 +10,26 @@ public class MainClient {
 
 
         try {
-            Socket socket = new Socket("localhost", 12345);
+            Socket client = new Socket("localhost", 12345);
             System.out.println("il client si è connesso al server!");
 
-            OutputStream os = socket.getOutputStream();
+
+            //communicazione
+            //Scrittura
+            OutputStream os = client.getOutputStream();
             PrintWriter pw = new PrintWriter(os);
-            pw.print("Ciao server!");
+            pw.println("Ciao server!");
             pw.flush();
-            socket.close();
+
+            //Lettura
+            InputStream is = client.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String m = br.readLine();
+            System.out.println("CLIENT: il server ha scritto '" + m + "'");
+
+            //Chiusura
+            client.close();
+
         } catch (IOException e) {
             System.err.println("Errore nella connessione al server!");
         }
