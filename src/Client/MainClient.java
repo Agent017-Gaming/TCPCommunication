@@ -10,17 +10,18 @@ public class MainClient {
 
 
         try {
+
+            //3. Creazione del data socket e connessione al server
             Socket client = new Socket("localhost", 12345);
             System.out.println("il client si è connesso al server!");
-
-
             //communicazione
-
-
             //Scrittura
+            // 4. il client comunica con il server
             OutputStream os = client.getOutputStream();
             PrintWriter pw = new PrintWriter(os);
+            //5.1 il client scrive un messaggio al server
             pw.println("Ciao server!");
+            //5.2 il client invia il messaggio al server
             pw.flush();
 
             //Lettura
