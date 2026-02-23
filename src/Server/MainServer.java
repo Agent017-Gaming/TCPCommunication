@@ -21,7 +21,7 @@ public class MainServer {
             InputStream is = clientSocket.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String m = br.readLine();
-            System.out.println("SERVER: il cliente ha scritto '" + m + "'");
+            System.out.println("SERVER: Il cliente ha scritto '" + m + "'");
 
             //Scrittura
             OutputStream os = clientSocket.getOutputStream();

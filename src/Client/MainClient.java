@@ -15,6 +15,8 @@ public class MainClient {
 
 
             //communicazione
+
+
             //Scrittura
             OutputStream os = client.getOutputStream();
             PrintWriter pw = new PrintWriter(os);
@@ -25,7 +27,7 @@ public class MainClient {
             InputStream is = client.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String m = br.readLine();
-            System.out.println("CLIENT: il server ha scritto '" + m + "'");
+            System.out.println("CLIENT: Il server ha scritto '" + m + "'");
 
             //Chiusura
             client.close();
